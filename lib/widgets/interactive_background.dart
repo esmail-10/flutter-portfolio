@@ -6,34 +6,19 @@ import 'package:flutter/scheduler.dart';
 
 import '../core/constants/app_constants.dart';
 
-/// A premium interactive background with soft animated gradients, a glowing
-/// blob that follows the mouse, and small floating particles.
-///
-/// On desktop/web the glow smoothly follows the cursor. On mobile the effect
-/// auto-animates without mouse interaction.
-///
-/// Place content as [child] so the mouse tracker wraps the full section and
-/// still receives hover events over interactive widgets.
 class InteractiveBackground extends StatefulWidget {
-  /// Number of floating particles (keep low for performance).
   final int particleCount;
 
-  /// Glow intensity multiplier (0.0 – 1.0).
   final double glowIntensity;
 
-  /// Animation speed multiplier (1.0 = normal).
   final double animationSpeed;
 
-  /// Radius in logical pixels within which particles react to the cursor.
   final double interactionRadius;
 
-  /// Overall opacity of the effect (0.0 – 1.0).
   final double opacity;
 
-  /// Accent color for the glow and particles.
   final Color accentColor;
 
-  /// Content layered on top of the background.
   final Widget? child;
 
   const InteractiveBackground({
@@ -57,7 +42,6 @@ class _InteractiveBackgroundState extends State<InteractiveBackground>
   late final List<_Particle> _particles;
   final math.Random _random = math.Random();
 
-  /// Live mouse state shared with the painter (no setState needed).
   final ValueNotifier<_MouseState> _mouseState = ValueNotifier(
     const _MouseState(position: Offset.zero, active: false),
   );
@@ -162,11 +146,6 @@ class _InteractiveBackgroundState extends State<InteractiveBackground>
     if (!_isDesktop) {
       return stack;
     }
-
-    // Listener + MouseRegion:
-    // - Listener (translucent) keeps receiving pointer hover even over
-    //   nested buttons / MouseRegions, so the glow always tracks.
-    // - MouseRegion.onExit clears the follow when the cursor leaves.
     return MouseRegion(
       onExit: (_) => _clearMouse(),
       child: Listener(

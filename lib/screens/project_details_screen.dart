@@ -7,14 +7,11 @@ import '../core/theme/app_theme.dart';
 import '../core/utils/url_utils.dart';
 import '../models/project_model.dart';
 
-/// Full-screen project details page with gallery, overview, features,
-/// architecture, technologies, challenges, and links.
 class ProjectDetailsScreen extends StatefulWidget {
   final Project project;
 
   const ProjectDetailsScreen({super.key, required this.project});
 
-  /// Route helper for a smooth page transition.
   static Route<void> page(Project project) {
     return PageRouteBuilder<void>(
       pageBuilder: (context, animation, secondaryAnimation) =>

@@ -13,7 +13,7 @@ class AppConstants {
   static const String githubUrl = 'https://github.com/esmail-10';
   static const String linkedinUrl =
       'https://www.linkedin.com/in/esmail-mhmd-9405b63ab';
-  static const String email = 'your.esmailmhmd63@gmail.com';
+  static const String email = 'esmailmhmd63@gmail.com';
   static const String whatsappNumber = '+201002405175';
   static const String cvUrl =
       'https://drive.google.com/file/d/1WF2OULL-8xqUWqiU7lPdeqY1nd1i1LA0/view?usp=drive_link';
@@ -21,6 +21,10 @@ class AppConstants {
   static const String tajhizGitHubUrl =
       'https://github.com/esmail-10/tajheez-flutter';
   static const String foodyGitHubUrl = 'https://github.com/esmail-10/foody';
+  static const String portfolioGitHubUrl =
+      'https://github.com/esmail-10/flutter-portfolio';
+  static const String profilePhotoAsset =
+      'assets/images/profile/profile_photo.jpg';
 
   static const List<String> navItems = [
     'Home',

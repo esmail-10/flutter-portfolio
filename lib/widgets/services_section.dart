@@ -7,7 +7,6 @@ import '../core/theme/app_theme.dart';
 import '../data/projects_data.dart';
 import 'common/section_header.dart';
 
-/// Services section — "What I Can Build".
 class ServicesSection extends StatelessWidget {
   const ServicesSection({super.key});
 

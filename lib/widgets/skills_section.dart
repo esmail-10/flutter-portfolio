@@ -7,7 +7,6 @@ import '../core/theme/app_theme.dart';
 import '../data/projects_data.dart';
 import 'common/section_header.dart';
 
-/// Skills section with modern category cards and hover effects.
 class SkillsSection extends StatelessWidget {
   const SkillsSection({super.key});
 

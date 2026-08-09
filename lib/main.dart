@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'core/theme/app_theme.dart';
 import 'screens/portfolio_screen.dart';
+import 'widgets/splash_screen.dart';
 
 void main() {
   runApp(const PortfolioApp());
@@ -16,7 +17,9 @@ class PortfolioApp extends StatelessWidget {
       title: 'Ismail — Flutter Developer',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.dark,
-      home: const PortfolioScreen(),
+      home: const SplashScreen(
+        child: PortfolioScreen(),
+      ),
     );
   }
 }

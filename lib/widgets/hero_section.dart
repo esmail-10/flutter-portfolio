@@ -8,8 +8,6 @@ import '../core/utils/url_utils.dart';
 import 'common/scroll_reveal.dart';
 import 'interactive_background.dart';
 
-/// Hero / home section with intro copy, CTA buttons, social links, and a
-/// Flutter-themed developer visual.
 class HeroSection extends StatelessWidget {
   const HeroSection({super.key});
 
@@ -509,7 +507,7 @@ class _HeroVisualState extends State<_HeroVisual>
                 child: child,
               );
             },
-            child: _VisualCard(size: size),
+            child: _ProfileHeroVisual(size: size),
           ),
         ],
       ),
@@ -517,97 +515,188 @@ class _HeroVisualState extends State<_HeroVisual>
   }
 }
 
-class _VisualCard extends StatelessWidget {
+class _ProfileHeroVisual extends StatefulWidget {
   final double size;
 
-  const _VisualCard({required this.size});
+  const _ProfileHeroVisual({required this.size});
+
+  @override
+  State<_ProfileHeroVisual> createState() => _ProfileHeroVisualState();
+}
+
+class _ProfileHeroVisualState extends State<_ProfileHeroVisual> {
+  bool _hovered = false;
 
   @override
   Widget build(BuildContext context) {
-    final cardWidth = size * 0.78;
-    final cardHeight = size * 0.56;
-    final contentWidth = cardWidth - (size * 0.1);
+    final avatarSize = widget.size * 0.62;
 
-    return Container(
-      width: cardWidth,
-      height: cardHeight,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(24),
-        gradient: AppColors.cardGradient,
-        border: Border.all(color: AppColors.borderHover),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.4),
-            blurRadius: 48,
-            offset: const Offset(0, 24),
+    return MouseRegion(
+      onEnter: (_) => setState(() => _hovered = true),
+      onExit: (_) => setState(() => _hovered = false),
+      child: Stack(
+        alignment: Alignment.center,
+        clipBehavior: Clip.none,
+        children: [
+          // Ambient Glow backdrop behind profile
+          AnimatedContainer(
+            duration: AppTheme.fastDuration,
+            width: avatarSize * 1.15,
+            height: avatarSize * 1.15,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              boxShadow: [
+                BoxShadow(
+                  color: AppColors.primary.withValues(alpha: _hovered ? 0.45 : 0.28),
+                  blurRadius: _hovered ? 50 : 35,
+                  spreadRadius: _hovered ? 8 : 4,
+                ),
+              ],
+            ),
+          ),
+
+          // Main Profile Avatar Container with double gradient border
+          AnimatedScale(
+            scale: _hovered ? 1.04 : 1.0,
+            duration: AppTheme.fastDuration,
+            curve: AppTheme.defaultCurve,
+            child: Container(
+              width: avatarSize,
+              height: avatarSize,
+              padding: const EdgeInsets.all(4),
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                gradient: AppColors.primaryGradient,
+              ),
+              child: Container(
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: AppColors.card,
+                ),
+                padding: const EdgeInsets.all(3),
+                child: ClipOval(
+                  child: Image.asset(
+                    AppConstants.profilePhotoAsset,
+                    width: avatarSize,
+                    height: avatarSize,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+            ),
+          ),
+
+          // Floating Chip Top-Left
+          Positioned(
+            left: -widget.size * 0.04,
+            top: widget.size * 0.06,
+            child: const _FloatingChip(
+              icon: Icons.phone_android_rounded,
+              label: 'Flutter Specialist',
+              color: AppColors.primary,
+            ),
+          ),
+
+          // Floating Chip Top-Right
+          Positioned(
+            right: -widget.size * 0.04,
+            top: widget.size * 0.18,
+            child: const _FloatingChip(
+              icon: Icons.bolt_rounded,
+              label: 'Clean Code',
+              color: AppColors.primarySoft,
+            ),
+          ),
+
+          // Glassmorphic Name & Status Badge Bottom-Center
+          Positioned(
+            bottom: -widget.size * 0.04,
+            child: AnimatedContainer(
+              duration: AppTheme.fastDuration,
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+              decoration: BoxDecoration(
+                color: AppColors.card.withValues(alpha: 0.92),
+                borderRadius: BorderRadius.circular(999),
+                border: Border.all(
+                  color: _hovered ? AppColors.primary : AppColors.borderHover,
+                  width: 1.5,
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withValues(alpha: 0.4),
+                    blurRadius: 20,
+                    offset: const Offset(0, 8),
+                  ),
+                ],
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Container(
+                    width: 9,
+                    height: 9,
+                    decoration: const BoxDecoration(
+                      color: AppColors.success,
+                      shape: BoxShape.circle,
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  Text(
+                    '${AppConstants.name} • Flutter Developer',
+                    style: GoogleFonts.inter(
+                      fontSize: 13.5,
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.textPrimary,
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
         ],
       ),
-      padding: EdgeInsets.all(size * 0.05),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+    );
+  }
+}
+
+class _FloatingChip extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final Color color;
+
+  const _FloatingChip({
+    required this.icon,
+    required this.label,
+    required this.color,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+      decoration: BoxDecoration(
+        color: AppColors.card.withValues(alpha: 0.9),
+        borderRadius: BorderRadius.circular(999),
+        border: Border.all(color: AppColors.borderHover),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.25),
+            blurRadius: 16,
+            offset: const Offset(0, 6),
+          ),
+        ],
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
         children: [
-          Row(
-            children: [
-              _WindowDot(color: Colors.redAccent),
-              const SizedBox(width: 6),
-              _WindowDot(color: AppColors.warning),
-              const SizedBox(width: 6),
-              _WindowDot(color: AppColors.success),
-              const Spacer(),
-              Icon(
-                Icons.phonelink_rounded,
-                size: size * 0.045,
-                color: AppColors.textMuted,
-              ),
-            ],
-          ),
-          const Spacer(),
-          _CodeLine(
-            width: contentWidth * 0.62,
-            color: AppColors.primary,
-            icon: Icons.phone_android_rounded,
-          ),
-          SizedBox(height: size * 0.035),
-          _CodeLine(
-            width: contentWidth * 0.82,
-            color: AppColors.primarySoft,
-            icon: Icons.bolt_rounded,
-          ),
-          SizedBox(height: size * 0.035),
-          _CodeLine(
-            width: contentWidth * 0.5,
-            color: AppColors.success,
-            icon: Icons.check_circle_outline_rounded,
-          ),
-          const Spacer(),
-          Container(
-            padding: EdgeInsets.symmetric(
-              horizontal: size * 0.035,
-              vertical: size * 0.018,
-            ),
-            decoration: BoxDecoration(
-              color: AppColors.primary.withValues(alpha: 0.1),
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(
-                  Icons.code_rounded,
-                  size: size * 0.04,
-                  color: AppColors.primary,
-                ),
-                SizedBox(width: size * 0.02),
-                Text(
-                  'Flutter & Dart',
-                  style: GoogleFonts.jetBrainsMono(
-                    fontSize: size * 0.037,
-                    color: AppColors.primarySoft,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ],
+          Icon(icon, size: 15, color: color),
+          const SizedBox(width: 7),
+          Text(
+            label,
+            style: GoogleFonts.inter(
+              fontSize: 12.5,
+              fontWeight: FontWeight.w600,
+              color: AppColors.textPrimary,
             ),
           ),
         ],

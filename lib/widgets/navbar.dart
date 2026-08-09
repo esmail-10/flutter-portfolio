@@ -6,7 +6,6 @@ import '../core/responsive/responsive_utils.dart';
 import '../core/theme/app_theme.dart';
 import '../core/utils/url_utils.dart';
 
-/// Top navigation bar with desktop links and a mobile hamburger menu.
 class Navbar extends StatefulWidget {
   const Navbar({super.key});
 
@@ -160,16 +159,18 @@ class _Logo extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            width: 36,
-            height: 36,
-            decoration: BoxDecoration(
+            padding: const EdgeInsets.all(2),
+            decoration: const BoxDecoration(
               gradient: AppColors.primaryGradient,
-              borderRadius: BorderRadius.circular(10),
+              shape: BoxShape.circle,
             ),
-            child: const Icon(
-              Icons.code_rounded,
-              color: AppColors.textOnPrimary,
-              size: 20,
+            child: ClipOval(
+              child: Image.asset(
+                AppConstants.profilePhotoAsset,
+                width: 34,
+                height: 34,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
           const SizedBox(width: 10),

@@ -4,7 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../core/constants/app_constants.dart';
 import '../../core/responsive/responsive_utils.dart';
 
-/// Reusable section header with eyebrow, title, and optional subtitle.
 class SectionHeader extends StatelessWidget {
   final String eyebrow;
   final String title;

@@ -7,7 +7,6 @@ import '../core/theme/app_theme.dart';
 import '../core/utils/url_utils.dart';
 import 'common/scroll_reveal.dart';
 
-/// Strong call-to-action contact section.
 class ContactSection extends StatelessWidget {
   const ContactSection({super.key});
 

@@ -7,7 +7,6 @@ import '../data/projects_data.dart';
 import 'common/scroll_reveal.dart';
 import 'common/section_header.dart';
 
-/// Learning journey timeline section.
 class JourneySection extends StatelessWidget {
   const JourneySection({super.key});
 

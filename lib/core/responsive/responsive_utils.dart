@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// Breakpoints for responsive layouts.
 class ResponsiveUtils {
   ResponsiveUtils._();
 
@@ -19,7 +18,6 @@ class ResponsiveUtils {
   static bool isDesktop(BuildContext context) =>
       MediaQuery.sizeOf(context).width >= tablet;
 
-  /// The max width at which content should sit on large screens.
   static double contentMaxWidth(BuildContext context) {
     final width = MediaQuery.sizeOf(context).width;
     if (width >= 1440) return 1280;
@@ -27,21 +25,18 @@ class ResponsiveUtils {
     return width;
   }
 
-  /// Adaptive horizontal padding based on screen size.
   static double horizontalPadding(BuildContext context) {
     if (isMobile(context)) return 20;
     if (isTablet(context)) return 40;
     return 64;
   }
 
-  /// Adaptive section vertical padding.
   static double sectionVerticalPadding(BuildContext context) {
     if (isMobile(context)) return 64;
     if (isTablet(context)) return 88;
     return 112;
   }
 
-  /// Number of columns a grid should use for the current width.
   static int gridColumns(BuildContext context, {required int max}) {
     final width = MediaQuery.sizeOf(context).width;
     if (width < 600) return 1;

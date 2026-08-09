@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// A single project shown in the portfolio.
 class Project {
   final String id;
   final String name;

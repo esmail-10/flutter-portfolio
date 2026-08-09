@@ -33,3 +33,5 @@ flutter:
   assets:
     - assets/images/foody/
     - assets/images/tajheez/
+    - assets/images/portfolio/
+    - assets/images/profile/

@@ -7,7 +7,6 @@ import 'common/section_header.dart';
 import 'interactive_background.dart';
 import 'project_card.dart';
 
-/// Featured Projects section.
 class ProjectsSection extends StatelessWidget {
   const ProjectsSection({super.key});
 

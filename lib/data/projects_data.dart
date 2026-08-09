@@ -248,6 +248,95 @@ class ProjectsData {
       ],
       githubUrl: AppConstants.foodyGitHubUrl,
     ),
+    Project(
+      id: 'portfolio',
+      name: 'Flutter Portfolio',
+      category: 'Personal Portfolio Website',
+      shortDescription:
+          'A fully responsive personal portfolio website built with Flutter Web, '
+          'showcasing projects, skills, and experience with smooth animations '
+          'and a modern dark design.',
+      overview:
+          'This portfolio is a Flutter Web application that serves as a central '
+          'showcase of my work as a Flutter Developer. Built entirely with Flutter '
+          'and Dart, it features a clean dark aesthetic, custom animations, and a '
+          'well-structured layout spanning sections for the home hero, about, '
+          'skills, projects, and contact. The site is fully responsive and '
+          'demonstrates advanced Flutter Web capabilities including smooth '
+          'scroll navigation, animated section transitions, and an interactive '
+          'project detail experience.',
+      features: [
+        'Fully responsive layout for desktop and mobile',
+        'Animated hero section with typewriter effect',
+        'Interactive projects showcase with detail views',
+        'Skills section organized by category',
+        'Journey / timeline section',
+        'Services section',
+        'Contact section with social links',
+        'Smooth scroll navigation with active section highlighting',
+        'Section entrance animations',
+        'Dark mode design with custom color system',
+      ],
+      technologies: [
+        'Flutter',
+        'Dart',
+        'Flutter Web',
+        'Custom Animations',
+        'Responsive Design',
+      ],
+      architecture: [
+        'Feature-first folder structure separating screens, widgets, models, and data',
+        'Static data classes to keep content decoupled from UI widgets',
+        'Reusable widget library for consistent sections and components',
+        'Scroll-based navigation using ScrollController and section keys',
+        'Clean separation between layout, styling constants, and business data',
+      ],
+      challenges: [
+        'Achieving pixel-perfect responsiveness across different screen sizes in Flutter Web',
+        'Implementing smooth scroll-based navigation with active section tracking',
+        'Designing a project detail experience that works well on both desktop and mobile',
+        'Creating a consistent animation system for section entrances without third-party libraries',
+        'Keeping the codebase maintainable as the number of sections and projects grows',
+      ],
+      logoAsset: 'assets/images/portfolio/home_portfolio.png',
+      screenshotLabels: [
+        'Home',
+        'About',
+        'Skills',
+        'Journey',
+        'Services',
+        'Projects',
+        'Contact',
+      ],
+      screenshotAssets: [
+        'assets/images/portfolio/home_portfolio.png',
+        'assets/images/portfolio/about_portfolio.png',
+        'assets/images/portfolio/skills_portfolio.png',
+        'assets/images/portfolio/journey_portfolio.png',
+        'assets/images/portfolio/services_portfolio.png',
+        'assets/images/portfolio/projects_portfolio.png',
+        'assets/images/portfolio/contactme_portfolio.png',
+      ],
+      screenshotColors: [
+        Color(0xFF0E7490),
+        Color(0xFF155E75),
+        Color(0xFF164E63),
+        Color(0xFF0369A1),
+        Color(0xFF0E7490),
+        Color(0xFF115E59),
+        Color(0xFF1D4ED8),
+      ],
+      screenshotIcons: [
+        Icons.home_rounded,
+        Icons.person_rounded,
+        Icons.code_rounded,
+        Icons.timeline_rounded,
+        Icons.miscellaneous_services_rounded,
+        Icons.work_rounded,
+        Icons.contact_mail_rounded,
+      ],
+      githubUrl: AppConstants.portfolioGitHubUrl,
+    ),
   ];
 
   static Project? getById(String id) {

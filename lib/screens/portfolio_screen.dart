@@ -13,7 +13,6 @@ import '../widgets/projects_section.dart';
 import '../widgets/services_section.dart';
 import '../widgets/skills_section.dart';
 
-/// Main single-page portfolio with all sections.
 class PortfolioScreen extends StatefulWidget {
   const PortfolioScreen({super.key});
 

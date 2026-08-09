@@ -7,7 +7,6 @@ import 'common/scroll_reveal.dart';
 import 'common/section_header.dart';
 import 'interactive_background.dart';
 
-/// About section with a professional profile card and areas of expertise.
 class AboutSection extends StatelessWidget {
   const AboutSection({super.key});
 
@@ -177,18 +176,45 @@ class _ProfileCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              width: 64,
-              height: 64,
-              decoration: BoxDecoration(
-                gradient: AppColors.primaryGradient,
-                borderRadius: BorderRadius.circular(18),
-              ),
-              child: const Icon(
-                Icons.person_rounded,
-                size: 34,
-                color: AppColors.textOnPrimary,
-              ),
+            Stack(
+              clipBehavior: Clip.none,
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(3),
+                  decoration: BoxDecoration(
+                    gradient: AppColors.primaryGradient,
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                        color: AppColors.primary.withValues(alpha: 0.3),
+                        blurRadius: 16,
+                        spreadRadius: 2,
+                      ),
+                    ],
+                  ),
+                  child: ClipOval(
+                    child: Image.asset(
+                      AppConstants.profilePhotoAsset,
+                      width: 74,
+                      height: 74,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                Positioned(
+                  right: 2,
+                  bottom: 2,
+                  child: Container(
+                    width: 16,
+                    height: 16,
+                    decoration: BoxDecoration(
+                      color: AppColors.success,
+                      shape: BoxShape.circle,
+                      border: Border.all(color: AppColors.card, width: 2.5),
+                    ),
+                  ),
+                ),
+              ],
             ),
             const SizedBox(height: 20),
             Text(

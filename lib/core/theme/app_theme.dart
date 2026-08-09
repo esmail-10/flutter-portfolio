@@ -3,7 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../constants/app_constants.dart';
 
-/// Central theme configuration for the whole portfolio.
 class AppTheme {
   AppTheme._();
 

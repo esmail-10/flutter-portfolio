@@ -8,7 +8,6 @@ import '../core/utils/url_utils.dart';
 import '../models/project_model.dart';
 import '../screens/project_details_screen.dart';
 
-/// Large modern project card with screenshot visual, description and actions.
 class ProjectCard extends StatefulWidget {
   final Project project;
   final bool large;
@@ -148,7 +147,6 @@ class _ProjectCardState extends State<ProjectCard> {
   }
 }
 
-/// Screenshot-style abstract visual for the project card.
 class _ProjectVisual extends StatelessWidget {
   final Project project;
   final bool hovered;

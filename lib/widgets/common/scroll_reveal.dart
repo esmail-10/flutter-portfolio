@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// Provides a [ScrollController] to descendant [ScrollReveal] widgets so they
-/// can detect when they enter the viewport.
 class ScrollRevealScope extends InheritedWidget {
   final ScrollController controller;
 
@@ -19,12 +17,6 @@ class ScrollRevealScope extends InheritedWidget {
       controller != oldWidget.controller;
 }
 
-/// Reveals its child with a fade + slide animation when it enters viewport.
-///
-/// The animation triggers the first time the widget becomes visible inside
-/// the scroll viewport (with an optional [delay]). It never re-triggers once
-/// revealed. If no [ScrollRevealScope] ancestor exists, the widget animates
-/// in immediately — useful for hero content on page load.
 class ScrollReveal extends StatefulWidget {
   final Widget child;
   final Duration delay;

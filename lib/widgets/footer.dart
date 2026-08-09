@@ -5,7 +5,6 @@ import '../core/constants/app_constants.dart';
 import '../core/responsive/responsive_utils.dart';
 import '../core/utils/url_utils.dart';
 
-/// Simple footer with copyright and quick links.
 class Footer extends StatelessWidget {
   const Footer({super.key});
 
