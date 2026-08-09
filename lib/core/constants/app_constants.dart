@@ -16,7 +16,7 @@ class AppConstants {
   static const String email = 'esmailmhmd63@gmail.com';
   static const String whatsappNumber = '+201002405175';
   static const String cvUrl =
-      'https://drive.google.com/file/d/1WF2OULL-8xqUWqiU7lPdeqY1nd1i1LA0/view?usp=drive_link';
+      'https://drive.google.com/file/d/1OvyzIOoyN1_01aBnbePPc1YkHhoKvsKb/view?usp=drive_link';
 
   static const String tajhizGitHubUrl =
       'https://github.com/esmail-10/tajheez-flutter';
