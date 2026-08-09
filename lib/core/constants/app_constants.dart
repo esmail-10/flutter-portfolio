@@ -10,11 +10,18 @@ class AppConstants {
       'Flutter Developer passionate about building clean, modern and '
       'scalable mobile applications with beautiful user experiences.';
 
+  static const String location = 'Egypt';
+  static const String displayPhone = '+20 100 240 5175';
+  static const String whatsappNumber = '+201002405175';
+  static const String email = 'esmailmhmd63@gmail.com';
   static const String githubUrl = 'https://github.com/esmail-10';
+  static const String githubDisplay = 'github.com/esmail-10';
   static const String linkedinUrl =
       'https://www.linkedin.com/in/esmail-mhmd-9405b63ab';
-  static const String email = 'esmailmhmd63@gmail.com';
-  static const String whatsappNumber = '+201002405175';
+  static const String linkedinDisplay =
+      'linkedin.com/in/esmail-mhmd-9405b63ab';
+  static const String portfolioUrl = 'https://ismail-mhmd.vercel.app';
+  static const String portfolioDisplay = 'ismail-mhmd.vercel.app';
   static const String cvUrl =
       'https://drive.google.com/file/d/1OvyzIOoyN1_01aBnbePPc1YkHhoKvsKb/view?usp=drive_link';
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:portfolio/widgets/common/brand_icons.dart';
 
 import '../core/constants/app_constants.dart';
 import '../core/responsive/responsive_utils.dart';
@@ -54,28 +55,24 @@ class Footer extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _FooterIcon(
+              GitHubBrandIcon(
                 tooltip: 'GitHub',
-                icon: Icons.code_rounded,
                 url: AppConstants.githubUrl,
+                size: 25,
               ),
               const SizedBox(width: 10),
-              _FooterIcon(
+              LinkedInBrandIcon(
                 tooltip: 'LinkedIn',
-                icon: Icons.work_rounded,
                 url: AppConstants.linkedinUrl,
+                size: 25,
               ),
               const SizedBox(width: 10),
-              _FooterIcon(
-                tooltip: 'Email',
-                icon: Icons.mail_rounded,
-                url: 'mailto:${AppConstants.email}',
-              ),
+              EmailIcon(tooltip: 'Email', email: AppConstants.email, size: 25),
               const SizedBox(width: 10),
-              _FooterIcon(
+              WhatsAppBrandIcon(
                 tooltip: 'WhatsApp',
-                icon: Icons.chat_rounded,
                 url: UrlUtils.whatsappUrl(AppConstants.whatsappNumber),
+                size: 25,
               ),
             ],
           ),
@@ -120,36 +117,6 @@ class _Logo extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-}
-
-class _FooterIcon extends StatelessWidget {
-  final String tooltip;
-  final IconData icon;
-  final String url;
-
-  const _FooterIcon({
-    required this.tooltip,
-    required this.icon,
-    required this.url,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () => UrlUtils.open(url),
-      borderRadius: BorderRadius.circular(8),
-      child: Container(
-        width: 38,
-        height: 38,
-        decoration: BoxDecoration(
-          color: AppColors.card,
-          borderRadius: BorderRadius.circular(8),
-          border: Border.all(color: AppColors.border),
-        ),
-        child: Icon(icon, size: 17, color: AppColors.textSecondary),
-      ),
     );
   }
 }

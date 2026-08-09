@@ -42,8 +42,8 @@ class AppTheme {
   }
 
   static const double maxContentWidth = 1200;
-  static const Duration fastDuration = Duration(milliseconds: 250);
-  static const Duration mediumDuration = Duration(milliseconds: 450);
-  static const Duration slowDuration = Duration(milliseconds: 700);
-  static const Curve defaultCurve = Curves.easeOutCubic;
+  static const Duration fastDuration = Duration(milliseconds: 220);
+  static const Duration mediumDuration = Duration(milliseconds: 400);
+  static const Duration slowDuration = Duration(milliseconds: 750);
+  static const Curve defaultCurve = Cubic(0.16, 1.0, 0.3, 1.0);
 }

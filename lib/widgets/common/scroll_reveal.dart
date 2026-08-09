@@ -22,13 +22,15 @@ class ScrollReveal extends StatefulWidget {
   final Duration delay;
   final double offset;
   final Axis axis;
+  final Duration duration;
 
   const ScrollReveal({
     super.key,
     required this.child,
     this.delay = Duration.zero,
-    this.offset = 40,
+    this.offset = 32,
     this.axis = Axis.vertical,
+    this.duration = const Duration(milliseconds: 850),
   });
 
   @override
@@ -39,7 +41,8 @@ class _ScrollRevealState extends State<ScrollReveal>
     with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
   late final Animation<double> _opacity;
-  late final Animation<Offset> _offset;
+  late final Animation<double> _translation;
+  late final Animation<double> _scale;
 
   ScrollController? _scrollController;
   bool _revealed = false;
@@ -49,15 +52,32 @@ class _ScrollRevealState extends State<ScrollReveal>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 750),
+      duration: widget.duration,
     );
-    _opacity = CurvedAnimation(parent: _controller, curve: Curves.easeOut);
-    _offset = Tween<Offset>(
-      begin: widget.axis == Axis.vertical
-          ? Offset(0, widget.offset)
-          : Offset(widget.offset, 0),
-      end: Offset.zero,
-    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOutCubic));
+
+    // Figma/Apple style ultra-smooth cubic easing curve
+    const smoothCurve = Cubic(0.16, 1.0, 0.3, 1.0);
+
+    _opacity = CurvedAnimation(
+      parent: _controller,
+      curve: const Interval(0.0, 0.8, curve: Curves.easeOut),
+    );
+
+    _translation = Tween<double>(
+      begin: widget.offset,
+      end: 0.0,
+    ).animate(CurvedAnimation(
+      parent: _controller,
+      curve: smoothCurve,
+    ));
+
+    _scale = Tween<double>(
+      begin: 0.96,
+      end: 1.0,
+    ).animate(CurvedAnimation(
+      parent: _controller,
+      curve: smoothCurve,
+    ));
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _attachToScroll();
@@ -96,9 +116,13 @@ class _ScrollRevealState extends State<ScrollReveal>
     _revealed = true;
     _scrollController?.removeListener(_checkVisibility);
 
-    Future<void>.delayed(widget.delay, () {
+    if (widget.delay == Duration.zero) {
       if (mounted) _controller.forward();
-    });
+    } else {
+      Future<void>.delayed(widget.delay, () {
+        if (mounted) _controller.forward();
+      });
+    }
   }
 
   @override
@@ -112,7 +136,21 @@ class _ScrollRevealState extends State<ScrollReveal>
   Widget build(BuildContext context) {
     return FadeTransition(
       opacity: _opacity,
-      child: SlideTransition(position: _offset, child: widget.child),
+      child: AnimatedBuilder(
+        animation: _translation,
+        builder: (context, child) {
+          final dy = widget.axis == Axis.vertical ? _translation.value : 0.0;
+          final dx = widget.axis == Axis.horizontal ? _translation.value : 0.0;
+          return Transform.translate(
+            offset: Offset(dx, dy),
+            child: Transform.scale(
+              scale: _scale.value,
+              child: child,
+            ),
+          );
+        },
+        child: widget.child,
+      ),
     );
   }
 }

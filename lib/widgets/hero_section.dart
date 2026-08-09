@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:portfolio/widgets/common/brand_icons.dart';
 
 import '../core/constants/app_constants.dart';
 import '../core/responsive/responsive_utils.dart';
@@ -203,22 +204,22 @@ class _SocialRow extends StatelessWidget {
       (
         tooltip: 'GitHub',
         url: AppConstants.githubUrl,
-        icon: Icons.code_rounded,
+        icon: const GitHubBrandIcon(size: 19, color: Colors.white),
       ),
       (
         tooltip: 'LinkedIn',
         url: AppConstants.linkedinUrl,
-        icon: Icons.work_rounded,
+        icon: const LinkedInBrandIcon(size: 19, color: Colors.white),
       ),
       (
         tooltip: 'Email',
         url: 'mailto:${AppConstants.email}',
-        icon: Icons.mail_rounded,
+        icon: const Icon(Icons.mail_rounded, size: 19, color: Colors.white),
       ),
       (
         tooltip: 'WhatsApp',
         url: UrlUtils.whatsappUrl(AppConstants.whatsappNumber),
-        icon: Icons.chat_rounded,
+        icon: const WhatsAppBrandIcon(size: 19, color: Colors.white),
       ),
     ];
 
@@ -240,7 +241,7 @@ class _SocialRow extends StatelessWidget {
 class _SocialIcon extends StatefulWidget {
   final String tooltip;
   final String url;
-  final IconData icon;
+  final Widget icon;
 
   const _SocialIcon({
     required this.tooltip,
@@ -258,8 +259,13 @@ class _SocialIconState extends State<_SocialIcon> {
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
-      onEnter: (_) => setState(() => _hovered = true),
-      onExit: (_) => setState(() => _hovered = false),
+      cursor: SystemMouseCursors.click,
+      onEnter: (_) {
+        setState(() => _hovered = true);
+      },
+      onExit: (_) {
+        setState(() => _hovered = false);
+      },
       child: Tooltip(
         message: widget.tooltip,
         child: InkWell(
@@ -278,17 +284,45 @@ class _SocialIconState extends State<_SocialIcon> {
                 color: _hovered ? AppColors.primary : AppColors.border,
               ),
             ),
-            child: Icon(
-              widget.icon,
-              size: 19,
-              color: _hovered
-                  ? AppColors.textOnPrimary
-                  : AppColors.textSecondary,
+            child: Center(
+              child: _hovered
+                  ? widget.icon
+                  : _changeIconColor(widget.icon, AppColors.textSecondary),
             ),
           ),
         ),
       ),
     );
+  }
+
+  Widget _changeIconColor(Widget icon, Color color) {
+    if (icon is Icon) {
+      return Icon(
+        icon.icon,
+        size: icon.size,
+        color: color,
+        semanticLabel: icon.semanticLabel,
+      );
+    }
+
+    if (icon is GitHubBrandIcon) {
+      return GitHubBrandIcon(
+        size: icon.size,
+        color: color,
+        url: icon.url,
+        tooltip: icon.tooltip,
+      );
+    }
+
+    if (icon is LinkedInBrandIcon) {
+      return LinkedInBrandIcon(size: icon.size, color: color);
+    }
+
+    if (icon is WhatsAppBrandIcon) {
+      return WhatsAppBrandIcon(size: icon.size, color: color);
+    }
+
+    return icon;
   }
 }
 
@@ -547,7 +581,9 @@ class _ProfileHeroVisualState extends State<_ProfileHeroVisual> {
               shape: BoxShape.circle,
               boxShadow: [
                 BoxShadow(
-                  color: AppColors.primary.withValues(alpha: _hovered ? 0.45 : 0.28),
+                  color: AppColors.primary.withValues(
+                    alpha: _hovered ? 0.45 : 0.28,
+                  ),
                   blurRadius: _hovered ? 50 : 35,
                   spreadRadius: _hovered ? 8 : 4,
                 ),
