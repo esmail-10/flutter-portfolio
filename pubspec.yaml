@@ -1,0 +1,35 @@
+name: portfolio
+description: "Professional Flutter Developer Portfolio for Ismail."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.9.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # The following adds the Cupertino Icons font to your application.
+  cupertino_icons: ^1.0.8
+
+  # Google Fonts for premium typography
+  google_fonts: ^6.2.1
+
+  # URL launcher for opening external links
+  url_launcher: ^6.3.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+
+  # Project screenshots and logos for the portfolio.
+  assets:
+    - assets/images/foody/
+    - assets/images/tajheez/
