@@ -98,7 +98,7 @@ class _EyebrowBadge extends StatelessWidget {
               fontSize: 12.5,
               fontWeight: FontWeight.w600,
               letterSpacing: 1.2,
-              color: AppColors.primarySoft,
+              color: AppColors.primary,
             ),
           ),
         ],

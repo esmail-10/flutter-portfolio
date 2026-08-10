@@ -5,13 +5,11 @@ class _SocialBrandIcon extends StatelessWidget {
   final Widget icon;
   final String? url;
   final String? tooltip;
-  final double borderRadius;
 
   const _SocialBrandIcon({
     required this.icon,
     this.url,
     this.tooltip,
-    this.borderRadius = 6.0,
   });
 
   Future<void> _openUrl() async {

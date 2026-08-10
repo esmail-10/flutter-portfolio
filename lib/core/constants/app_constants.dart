@@ -46,59 +46,30 @@ class AppConstants {
 class AppColors {
   AppColors._();
 
-  static Color background = _light.background;
-  static Color secondaryBackground = _light.secondaryBackground;
-  static Color card = _light.card;
-  static Color cardHover = _light.cardHover;
+  static Color background = _dark.background;
+  static Color secondaryBackground = _dark.secondaryBackground;
+  static Color card = _dark.card;
+  static Color cardHover = _dark.cardHover;
 
-  static Color primary = _light.primary;
-  static Color primaryDark = _light.primaryDark;
-  static Color primarySoft = _light.primarySoft;
+  static Color primary = _dark.primary;
+  static Color primaryDark = _dark.primaryDark;
+  static Color primarySoft = _dark.primarySoft;
 
-  static Color textPrimary = _light.textPrimary;
-  static Color textSecondary = _light.textSecondary;
-  static Color textMuted = _light.textMuted;
+  static Color textPrimary = _dark.textPrimary;
+  static Color textSecondary = _dark.textSecondary;
+  static Color textMuted = _dark.textMuted;
 
-  static Color border = _light.border;
-  static Color borderHover = _light.borderHover;
+  static Color border = _dark.border;
+  static Color borderHover = _dark.borderHover;
 
-  static Color success = _light.success;
-  static Color warning = _light.warning;
-  static Color danger = _light.danger;
+  static Color success = _dark.success;
+  static Color warning = _dark.warning;
+  static Color danger = _dark.danger;
 
-  static Color textOnPrimary = _light.textOnPrimary;
+  static Color textOnPrimary = _dark.textOnPrimary;
 
-  static LinearGradient primaryGradient = _light.primaryGradient;
-  static LinearGradient cardGradient = _light.cardGradient;
-
-  static const _AppPalette _light = _AppPalette(
-    background: Color(0xFFF8FAFC),
-    secondaryBackground: Color(0xFFF1F5F9),
-    card: Color(0xFFFFFFFF),
-    cardHover: Color(0xFFE2E8F0),
-    primary: Color(0xFF0891B2),
-    primaryDark: Color(0xFF0E7490),
-    primarySoft: Color(0xFF06B6D4),
-    textPrimary: Color(0xFF0F172A),
-    textSecondary: Color(0xFF475569),
-    textMuted: Color(0xFF94A3B8),
-    border: Color(0xFFE2E8F0),
-    borderHover: Color(0xFFCBD5E1),
-    success: Color(0xFF10B981),
-    warning: Color(0xFFF59E0B),
-    danger: Color(0xFFEF4444),
-    textOnPrimary: Color(0xFFFFFFFF),
-    primaryGradient: LinearGradient(
-      colors: [Color(0xFF06B6D4), Color(0xFF3B82F6)],
-      begin: Alignment.topLeft,
-      end: Alignment.bottomRight,
-    ),
-    cardGradient: LinearGradient(
-      colors: [Color(0xFFFFFFFF), Color(0xFFF8FAFC)],
-      begin: Alignment.topLeft,
-      end: Alignment.bottomRight,
-    ),
-  );
+  static LinearGradient primaryGradient = _dark.primaryGradient;
+  static LinearGradient cardGradient = _dark.cardGradient;
 
   static const _AppPalette _dark = _AppPalette(
     background: Color(0xFF0B0F19),
@@ -128,27 +99,6 @@ class AppColors {
       end: Alignment.bottomRight,
     ),
   );
-
-  static void applyLight() {
-    background = _light.background;
-    secondaryBackground = _light.secondaryBackground;
-    card = _light.card;
-    cardHover = _light.cardHover;
-    primary = _light.primary;
-    primaryDark = _light.primaryDark;
-    primarySoft = _light.primarySoft;
-    textPrimary = _light.textPrimary;
-    textSecondary = _light.textSecondary;
-    textMuted = _light.textMuted;
-    border = _light.border;
-    borderHover = _light.borderHover;
-    success = _light.success;
-    warning = _light.warning;
-    danger = _light.danger;
-    textOnPrimary = _light.textOnPrimary;
-    primaryGradient = _light.primaryGradient;
-    cardGradient = _light.cardGradient;
-  }
 
   static void applyDark() {
     background = _dark.background;

@@ -80,7 +80,7 @@ class _ProjectDetailsScreenState extends State<ProjectDetailsScreen> {
                   child: IconButton(
                     onPressed: () => UrlUtils.open(project.githubUrl!),
                     icon: const Icon(Icons.code_rounded),
-                    color: AppColors.primarySoft,
+                    color: AppColors.primary,
                     tooltip: 'GitHub',
                   ),
                 ),
@@ -123,7 +123,7 @@ class _ProjectDetailsScreenState extends State<ProjectDetailsScreen> {
                     style: GoogleFonts.inter(
                       fontSize: 13,
                       fontWeight: FontWeight.w600,
-                      color: AppColors.primarySoft,
+                      color: AppColors.primary,
                     ),
                   ),
                 ),
@@ -260,7 +260,7 @@ class _HeroBanner extends StatelessWidget {
                 ),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.4),
+                    color: AppColors.primary.withValues(alpha: 0.15),
                     blurRadius: 40,
                     offset: const Offset(0, 20),
                   ),
@@ -591,7 +591,7 @@ class _TechPill extends StatelessWidget {
         label,
         style: GoogleFonts.jetBrainsMono(
           fontSize: 12.5,
-          color: AppColors.primarySoft,
+          color: AppColors.primary,
         ),
       ),
     );
@@ -734,7 +734,7 @@ class _LinkButtonState extends State<_LinkButton> {
                 size: 17,
                 color: _hovered
                     ? AppColors.textOnPrimary
-                    : AppColors.primarySoft,
+                    : AppColors.primary,
               ),
               const SizedBox(width: 9),
               Text(

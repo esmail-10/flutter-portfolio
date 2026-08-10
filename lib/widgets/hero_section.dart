@@ -291,7 +291,7 @@ class _SocialIconState extends State<_SocialIcon> {
             ),
             child: Center(
               child: _hovered
-                  ? widget.icon
+                  ? _changeIconColor(widget.icon, AppColors.textOnPrimary)
                   : _changeIconColor(widget.icon, AppColors.textSecondary),
             ),
           ),
@@ -662,7 +662,7 @@ class _ProfileHeroVisualState extends State<_ProfileHeroVisual> {
                 ),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.4),
+                    color: AppColors.primary.withValues(alpha: 0.12),
                     blurRadius: 20,
                     offset: const Offset(0, 8),
                   ),
@@ -719,7 +719,7 @@ class _FloatingChip extends StatelessWidget {
         border: Border.all(color: AppColors.borderHover),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.25),
+            color: AppColors.primary.withValues(alpha: 0.1),
             blurRadius: 16,
             offset: const Offset(0, 6),
           ),
@@ -740,51 +740,6 @@ class _FloatingChip extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-}
-
-class _WindowDot extends StatelessWidget {
-  final Color color;
-
-  const _WindowDot({required this.color});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 10,
-      height: 10,
-      decoration: BoxDecoration(color: color, shape: BoxShape.circle),
-    );
-  }
-}
-
-class _CodeLine extends StatelessWidget {
-  final double width;
-  final Color color;
-  final IconData icon;
-
-  const _CodeLine({
-    required this.width,
-    required this.color,
-    required this.icon,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Icon(icon, size: 14, color: color),
-        const SizedBox(width: 8),
-        Container(
-          width: width,
-          height: 7,
-          decoration: BoxDecoration(
-            color: color.withValues(alpha: 0.55),
-            borderRadius: BorderRadius.circular(999),
-          ),
-        ),
-      ],
     );
   }
 }

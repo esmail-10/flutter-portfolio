@@ -43,16 +43,16 @@ class _ProjectCardState extends State<ProjectCard> {
           boxShadow: _hovered
               ? [
                   BoxShadow(
-                    color: AppColors.primary.withValues(alpha: 0.1),
-                    blurRadius: 40,
-                    offset: const Offset(0, 18),
+                    color: AppColors.primary.withValues(alpha: 0.15),
+                    blurRadius: 36,
+                    offset: const Offset(0, 14),
                   ),
                 ]
-              : const [
+              : [
                   BoxShadow(
-                    color: Colors.black38,
-                    blurRadius: 30,
-                    offset: Offset(0, 12),
+                    color: AppColors.border.withValues(alpha: 0.6),
+                    blurRadius: 20,
+                    offset: const Offset(0, 8),
                   ),
                 ],
         ),
@@ -78,12 +78,12 @@ class _ProjectCardState extends State<ProjectCard> {
                         color: AppColors.primary.withValues(alpha: 0.25),
                       ),
                     ),
-                    child: Text(
+                     child: Text(
                       widget.project.category,
                       style: GoogleFonts.inter(
                         fontSize: 12,
                         fontWeight: FontWeight.w600,
-                        color: AppColors.primarySoft,
+                        color: AppColors.primary,
                       ),
                     ),
                   ),
@@ -228,7 +228,7 @@ class _ProjectVisual extends StatelessWidget {
                   ? Image.asset(project.logoAsset!, fit: BoxFit.contain)
                   : Icon(
                       project.screenshotIcons[1],
-                      color: AppColors.textOnPrimary,
+                      color: AppColors.primary,
                       size: 25,
                     ),
             ),

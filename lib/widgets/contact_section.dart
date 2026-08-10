@@ -167,7 +167,7 @@ class _ContactInfoGrid extends StatelessWidget {
           children: [
             Icon(Icons.phone_rounded, size: 16, color: AppColors.primary),
             const SizedBox(width: 4),
-            WhatsAppBrandIcon(size: 16, color: AppColors.primarySoft),
+            WhatsAppBrandIcon(size: 16, color: AppColors.primary),
           ],
         ),
         url: UrlUtils.whatsappUrl(AppConstants.whatsappNumber),
