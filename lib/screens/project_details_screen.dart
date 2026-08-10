@@ -556,11 +556,7 @@ class _FeatureList extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Icon(
-                  Icons.check_rounded,
-                  size: 15,
-                  color: AppColors.success,
-                ),
+                Icon(Icons.check_rounded, size: 15, color: AppColors.success),
                 const SizedBox(width: 7),
                 Text(
                   feature,
@@ -619,7 +615,7 @@ class _BulletList extends StatelessWidget {
                 margin: const EdgeInsets.only(top: 7),
                 width: 6,
                 height: 6,
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   color: AppColors.primary,
                   shape: BoxShape.circle,
                 ),

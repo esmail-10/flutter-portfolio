@@ -17,7 +17,7 @@ class InteractiveBackground extends StatefulWidget {
 
   final double opacity;
 
-  final Color accentColor;
+  final Color? accentColor;
 
   final Widget? child;
 
@@ -28,7 +28,7 @@ class InteractiveBackground extends StatefulWidget {
     this.animationSpeed = 1.0,
     this.interactionRadius = 180,
     this.opacity = 0.5,
-    this.accentColor = AppColors.primary,
+    this.accentColor,
     this.child,
   });
 
@@ -130,7 +130,7 @@ class _InteractiveBackgroundState extends State<InteractiveBackground>
           glowIntensity: widget.glowIntensity,
           interactionRadius: widget.interactionRadius,
           opacity: widget.opacity,
-          accentColor: widget.accentColor,
+          accentColor: widget.accentColor ?? AppColors.primary,
         ),
         child: const SizedBox.expand(),
       ),

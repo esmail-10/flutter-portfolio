@@ -50,12 +50,8 @@ class _ScrollRevealState extends State<ScrollReveal>
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
-      vsync: this,
-      duration: widget.duration,
-    );
+    _controller = AnimationController(vsync: this, duration: widget.duration);
 
-    // Figma/Apple style ultra-smooth cubic easing curve
     const smoothCurve = Cubic(0.16, 1.0, 0.3, 1.0);
 
     _opacity = CurvedAnimation(
@@ -66,18 +62,12 @@ class _ScrollRevealState extends State<ScrollReveal>
     _translation = Tween<double>(
       begin: widget.offset,
       end: 0.0,
-    ).animate(CurvedAnimation(
-      parent: _controller,
-      curve: smoothCurve,
-    ));
+    ).animate(CurvedAnimation(parent: _controller, curve: smoothCurve));
 
     _scale = Tween<double>(
       begin: 0.96,
       end: 1.0,
-    ).animate(CurvedAnimation(
-      parent: _controller,
-      curve: smoothCurve,
-    ));
+    ).animate(CurvedAnimation(parent: _controller, curve: smoothCurve));
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _attachToScroll();
@@ -143,10 +133,7 @@ class _ScrollRevealState extends State<ScrollReveal>
           final dx = widget.axis == Axis.horizontal ? _translation.value : 0.0;
           return Transform.translate(
             offset: Offset(dx, dy),
-            child: Transform.scale(
-              scale: _scale.value,
-              child: child,
-            ),
+            child: Transform.scale(scale: _scale.value, child: child),
           );
         },
         child: widget.child,

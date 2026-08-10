@@ -325,7 +325,7 @@ class _ViewDetailsButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(
+            Icon(
               Icons.arrow_forward_rounded,
               size: 16,
               color: AppColors.textOnPrimary,
@@ -364,11 +364,7 @@ class _GitHubButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
           border: Border.all(color: AppColors.borderHover),
         ),
-        child: const Icon(
-          Icons.code_rounded,
-          size: 18,
-          color: AppColors.textPrimary,
-        ),
+        child: Icon(Icons.code_rounded, size: 18, color: AppColors.textPrimary),
       ),
     );
   }

@@ -44,12 +44,10 @@ class ContactSection extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  // Profile Avatar & Status Badge Header
                   const _ProfileAvatarHeader(),
 
                   const SizedBox(height: 24),
 
-                  // Section Title
                   Text(
                     'Let\'s Build Something Great Together',
                     textAlign: TextAlign.center,
@@ -75,7 +73,6 @@ class ContactSection extends StatelessWidget {
 
                   const SizedBox(height: 36),
 
-                  // Contact Details Grid
                   const _ContactInfoGrid(),
                 ],
               ),
@@ -87,7 +84,6 @@ class ContactSection extends StatelessWidget {
   }
 }
 
-/// Profile Avatar Header with double gradient border and online status indicator
 class _ProfileAvatarHeader extends StatelessWidget {
   const _ProfileAvatarHeader();
 
@@ -145,7 +141,6 @@ class _ProfileAvatarHeader extends StatelessWidget {
   }
 }
 
-/// Grid layout of contact information items
 class _ContactInfoGrid extends StatelessWidget {
   const _ContactInfoGrid();
 
@@ -157,7 +152,7 @@ class _ContactInfoGrid extends StatelessWidget {
       _ContactItemData(
         title: 'Location',
         value: AppConstants.location,
-        leading: const Icon(
+        leading: Icon(
           Icons.location_on_rounded,
           size: 18,
           color: AppColors.primary,
@@ -167,11 +162,11 @@ class _ContactInfoGrid extends StatelessWidget {
       _ContactItemData(
         title: 'Phone / WhatsApp',
         value: AppConstants.displayPhone,
-        leading: const Row(
+        leading: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
             Icon(Icons.phone_rounded, size: 16, color: AppColors.primary),
-            SizedBox(width: 4),
+            const SizedBox(width: 4),
             WhatsAppBrandIcon(size: 16, color: AppColors.primarySoft),
           ],
         ),
@@ -180,34 +175,26 @@ class _ContactInfoGrid extends StatelessWidget {
       _ContactItemData(
         title: 'Email',
         value: AppConstants.email,
-        leading: const Icon(
-          Icons.mail_rounded,
-          size: 18,
-          color: AppColors.primary,
-        ),
+        leading: Icon(Icons.mail_rounded, size: 18, color: AppColors.primary),
         url: 'mailto:${AppConstants.email}',
       ),
       _ContactItemData(
         title: 'GitHub',
         value: AppConstants.githubDisplay,
-        leading: const GitHubBrandIcon(size: 18, color: AppColors.primary),
+        leading: GitHubBrandIcon(size: 18, color: AppColors.primary),
         url: AppConstants.githubUrl,
+      ),
+      _ContactItemData(
+        title: 'Facebook',
+        value: AppConstants.facebookDisplay,
+        leading: FacebookBrandIcon(size: 18, color: AppColors.primary),
+        url: AppConstants.facebookUrl,
       ),
       _ContactItemData(
         title: 'LinkedIn',
         value: AppConstants.linkedinDisplay,
-        leading: const LinkedInBrandIcon(size: 18, color: AppColors.primary),
+        leading: LinkedInBrandIcon(size: 18, color: AppColors.primary),
         url: AppConstants.linkedinUrl,
-      ),
-      _ContactItemData(
-        title: 'Portfolio',
-        value: AppConstants.portfolioDisplay,
-        leading: const Icon(
-          Icons.language_rounded,
-          size: 18,
-          color: AppColors.primary,
-        ),
-        url: AppConstants.portfolioUrl,
       ),
     ];
 
@@ -360,7 +347,7 @@ class _ContactInfoTileState extends State<_ContactInfoTile> {
                 AnimatedOpacity(
                   duration: AppTheme.fastDuration,
                   opacity: _hovered ? 1.0 : 0.4,
-                  child: const Icon(
+                  child: Icon(
                     Icons.arrow_outward_rounded,
                     size: 15,
                     color: AppColors.textSecondary,
@@ -407,7 +394,7 @@ class _ContactPrimaryButtonState extends State<_ContactPrimaryButton> {
           padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 13),
           decoration: BoxDecoration(
             gradient: _hovered
-                ? const LinearGradient(
+                ? LinearGradient(
                     colors: [AppColors.primarySoft, AppColors.primary],
                   )
                 : AppColors.primaryGradient,

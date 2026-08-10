@@ -141,11 +141,7 @@ class _AreaChip extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Icon(
-            Icons.check_circle_rounded,
-            size: 14,
-            color: AppColors.primary,
-          ),
+          Icon(Icons.check_circle_rounded, size: 14, color: AppColors.primary),
           const SizedBox(width: 7),
           Text(
             label,
@@ -235,7 +231,7 @@ class _ProfileCard extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-            const Divider(color: AppColors.border),
+            Divider(color: AppColors.border),
             const SizedBox(height: 8),
             for (final item in const [
               (icon: Icons.school_rounded, label: 'Computer Science Graduate'),

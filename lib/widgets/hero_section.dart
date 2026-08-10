@@ -98,7 +98,7 @@ class _HeroCopy extends StatelessWidget {
                 Container(
                   width: 8,
                   height: 8,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     color: AppColors.success,
                     shape: BoxShape.circle,
                   ),
@@ -204,22 +204,27 @@ class _SocialRow extends StatelessWidget {
       (
         tooltip: 'GitHub',
         url: AppConstants.githubUrl,
-        icon: const GitHubBrandIcon(size: 19, color: Colors.white),
+        icon: GitHubBrandIcon(size: 19, color: AppColors.textPrimary),
+      ),
+      (
+        tooltip: 'Facebook',
+        url: AppConstants.facebookUrl,
+        icon: FacebookBrandIcon(size: 19, color: AppColors.textPrimary),
       ),
       (
         tooltip: 'LinkedIn',
         url: AppConstants.linkedinUrl,
-        icon: const LinkedInBrandIcon(size: 19, color: Colors.white),
+        icon: LinkedInBrandIcon(size: 19, color: AppColors.textPrimary),
       ),
       (
         tooltip: 'Email',
         url: 'mailto:${AppConstants.email}',
-        icon: const Icon(Icons.mail_rounded, size: 19, color: Colors.white),
+        icon: Icon(Icons.mail_rounded, size: 19, color: AppColors.textPrimary),
       ),
       (
         tooltip: 'WhatsApp',
         url: UrlUtils.whatsappUrl(AppConstants.whatsappNumber),
-        icon: const WhatsAppBrandIcon(size: 19, color: Colors.white),
+        icon: WhatsAppBrandIcon(size: 19, color: AppColors.textPrimary),
       ),
     ];
 
@@ -314,6 +319,10 @@ class _SocialIconState extends State<_SocialIcon> {
       );
     }
 
+    if (icon is FacebookBrandIcon) {
+      return FacebookBrandIcon(size: icon.size, color: color);
+    }
+
     if (icon is LinkedInBrandIcon) {
       return LinkedInBrandIcon(size: icon.size, color: color);
     }
@@ -358,7 +367,7 @@ class _PrimaryButtonState extends State<_PrimaryButton> {
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
           decoration: BoxDecoration(
             gradient: _hovered
-                ? const LinearGradient(
+                ? LinearGradient(
                     colors: [AppColors.primarySoft, AppColors.primary],
                   )
                 : AppColors.primaryGradient,
@@ -460,7 +469,6 @@ class _GhostButtonState extends State<_GhostButton> {
   }
 }
 
-/// Animated Flutter-themed abstract developer visual.
 class _HeroVisual extends StatefulWidget {
   @override
   State<_HeroVisual> createState() => _HeroVisualState();
@@ -572,7 +580,6 @@ class _ProfileHeroVisualState extends State<_ProfileHeroVisual> {
         alignment: Alignment.center,
         clipBehavior: Clip.none,
         children: [
-          // Ambient Glow backdrop behind profile
           AnimatedContainer(
             duration: AppTheme.fastDuration,
             width: avatarSize * 1.15,
@@ -591,7 +598,6 @@ class _ProfileHeroVisualState extends State<_ProfileHeroVisual> {
             ),
           ),
 
-          // Main Profile Avatar Container with double gradient border
           AnimatedScale(
             scale: _hovered ? 1.04 : 1.0,
             duration: AppTheme.fastDuration,
@@ -600,12 +606,12 @@ class _ProfileHeroVisualState extends State<_ProfileHeroVisual> {
               width: avatarSize,
               height: avatarSize,
               padding: const EdgeInsets.all(4),
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 gradient: AppColors.primaryGradient,
               ),
               child: Container(
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: AppColors.card,
                 ),
@@ -622,29 +628,26 @@ class _ProfileHeroVisualState extends State<_ProfileHeroVisual> {
             ),
           ),
 
-          // Floating Chip Top-Left
           Positioned(
             left: -widget.size * 0.04,
             top: widget.size * 0.06,
-            child: const _FloatingChip(
+            child: _FloatingChip(
               icon: Icons.phone_android_rounded,
               label: 'Flutter Specialist',
               color: AppColors.primary,
             ),
           ),
 
-          // Floating Chip Top-Right
           Positioned(
             right: -widget.size * 0.04,
             top: widget.size * 0.18,
-            child: const _FloatingChip(
+            child: _FloatingChip(
               icon: Icons.bolt_rounded,
               label: 'Clean Code',
               color: AppColors.primarySoft,
             ),
           ),
 
-          // Glassmorphic Name & Status Badge Bottom-Center
           Positioned(
             bottom: -widget.size * 0.04,
             child: AnimatedContainer(
@@ -671,7 +674,7 @@ class _ProfileHeroVisualState extends State<_ProfileHeroVisual> {
                   Container(
                     width: 9,
                     height: 9,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       color: AppColors.success,
                       shape: BoxShape.circle,
                     ),

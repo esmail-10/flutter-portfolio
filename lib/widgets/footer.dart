@@ -61,6 +61,12 @@ class Footer extends StatelessWidget {
                 size: 25,
               ),
               const SizedBox(width: 10),
+              FacebookBrandIcon(
+                tooltip: 'Facebook',
+                url: AppConstants.facebookUrl,
+                size: 25,
+              ),
+              const SizedBox(width: 10),
               LinkedInBrandIcon(
                 tooltip: 'LinkedIn',
                 url: AppConstants.linkedinUrl,
@@ -101,7 +107,7 @@ class _Logo extends StatelessWidget {
             gradient: AppColors.primaryGradient,
             borderRadius: BorderRadius.circular(9),
           ),
-          child: const Icon(
+          child: Icon(
             Icons.code_rounded,
             size: 17,
             color: AppColors.textOnPrimary,

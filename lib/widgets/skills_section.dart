@@ -126,7 +126,7 @@ class _SkillCategoryCardState extends State<_SkillCategoryCard> {
               ],
             ),
             const SizedBox(height: 18),
-            const Divider(color: AppColors.border),
+            Divider(color: AppColors.border),
             const SizedBox(height: 12),
             for (final item in widget.items) ...[
               _SkillRow(name: item.name, icon: item.icon),

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../core/constants/app_constants.dart';
 import '../models/project_model.dart';
 
-/// Static data for the portfolio projects.
 class ProjectsData {
   ProjectsData._();
 
@@ -347,7 +346,6 @@ class ProjectsData {
   }
 }
 
-/// Skills data.
 class SkillsData {
   SkillsData._();
 
@@ -391,7 +389,6 @@ class SkillsData {
   ];
 }
 
-/// Journey timeline data.
 class JourneyData {
   JourneyData._();
 
@@ -422,7 +419,6 @@ class JourneyData {
       ];
 }
 
-/// Services data.
 class ServicesData {
   ServicesData._();
 

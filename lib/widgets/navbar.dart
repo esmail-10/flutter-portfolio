@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../main.dart';
 import '../core/constants/app_constants.dart';
 import '../core/responsive/responsive_utils.dart';
 import '../core/theme/app_theme.dart';
@@ -135,10 +136,15 @@ class _NavbarState extends State<Navbar> {
           if (showDesktopNav) ...[
             for (final item in AppConstants.navItems)
               _NavLink(label: item, onTap: () => _navigate(item)),
-            const SizedBox(width: 24),
+            const SizedBox(width: 16),
+            const _ThemeToggleButton(),
+            const SizedBox(width: 12),
             _DownloadCvButton(),
-          ] else
+          ] else ...[
+            const _ThemeToggleButton(),
+            const SizedBox(width: 8),
             _MobileMenuButton(onTap: _openMobileMenu),
+          ],
         ],
       ),
     );
@@ -160,7 +166,7 @@ class _Logo extends StatelessWidget {
         children: [
           Container(
             padding: const EdgeInsets.all(2),
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               gradient: AppColors.primaryGradient,
               shape: BoxShape.circle,
             ),
@@ -250,7 +256,7 @@ class _DownloadCvButtonState extends State<_DownloadCvButton> {
           padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
           decoration: BoxDecoration(
             gradient: _hovered
-                ? const LinearGradient(
+                ? LinearGradient(
                     colors: [AppColors.primarySoft, AppColors.primary],
                   )
                 : AppColors.primaryGradient,
@@ -281,6 +287,53 @@ class _DownloadCvButtonState extends State<_DownloadCvButton> {
   }
 }
 
+class _ThemeToggleButton extends StatelessWidget {
+  const _ThemeToggleButton();
+
+  @override
+  Widget build(BuildContext context) {
+    return ValueListenableBuilder<ThemeMode>(
+      valueListenable: themeModeNotifier,
+      builder: (context, mode, _) {
+        final isDark = mode == ThemeMode.dark;
+        return Tooltip(
+          message: isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode',
+          child: InkWell(
+            onTap: () {
+              themeModeNotifier.value = isDark
+                  ? ThemeMode.light
+                  : ThemeMode.dark;
+            },
+            borderRadius: BorderRadius.circular(10),
+            child: AnimatedContainer(
+              duration: AppTheme.fastDuration,
+              curve: AppTheme.defaultCurve,
+              width: 42,
+              height: 42,
+              decoration: BoxDecoration(
+                color: AppColors.card,
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(color: AppColors.border),
+              ),
+              child: AnimatedSwitcher(
+                duration: AppTheme.fastDuration,
+                transitionBuilder: (child, animation) =>
+                    FadeTransition(opacity: animation, child: child),
+                child: Icon(
+                  isDark ? Icons.light_mode_rounded : Icons.dark_mode_rounded,
+                  key: ValueKey(isDark),
+                  color: AppColors.primary,
+                  size: 22,
+                ),
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
 class _MobileMenuButton extends StatelessWidget {
   final VoidCallback onTap;
 
@@ -299,11 +352,7 @@ class _MobileMenuButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
           border: Border.all(color: AppColors.border),
         ),
-        child: const Icon(
-          Icons.menu_rounded,
-          color: AppColors.textPrimary,
-          size: 24,
-        ),
+        child: Icon(Icons.menu_rounded, color: AppColors.textPrimary, size: 24),
       ),
     );
   }

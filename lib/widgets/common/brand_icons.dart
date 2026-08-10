@@ -37,7 +37,6 @@ class _SocialBrandIcon extends StatelessWidget {
       );
     }
 
-    // Add tooltip only when valid text exists.
     if (tooltip != null && tooltip!.trim().isNotEmpty) {
       result = Tooltip(message: tooltip!, child: result);
     }
@@ -122,6 +121,79 @@ class _GitHubBrandPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant _GitHubBrandPainter oldDelegate) =>
+      oldDelegate.color != color;
+}
+
+class FacebookBrandIcon extends StatelessWidget {
+  final double size;
+  final Color color;
+  final String? url;
+  final String? tooltip;
+
+  const FacebookBrandIcon({
+    super.key,
+    this.size = 18.0,
+    this.color = Colors.white,
+    this.url,
+    this.tooltip,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return _SocialBrandIcon(
+      url: url,
+      tooltip: tooltip,
+      icon: CustomPaint(
+        size: Size(size, size),
+        painter: _FacebookBrandPainter(color),
+      ),
+    );
+  }
+}
+
+class _FacebookBrandPainter extends CustomPainter {
+  final Color color;
+
+  _FacebookBrandPainter(this.color);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final scale = size.width / 24.0;
+    canvas.scale(scale, scale);
+
+    final paint = Paint()
+      ..color = color
+      ..style = PaintingStyle.fill
+      ..isAntiAlias = true;
+
+    final path = Path()
+      ..moveTo(24, 12.073)
+      ..cubicTo(24, 5.405, 18.627, 0, 12, 0)
+      ..cubicTo(5.373, 0, 0, 5.405, 0, 12.073)
+      ..cubicTo(0, 18.1, 4.388, 23.094, 10.125, 24)
+      ..lineTo(10.125, 15.563)
+      ..lineTo(7.078, 15.563)
+      ..lineTo(7.078, 12.073)
+      ..lineTo(10.125, 12.073)
+      ..lineTo(10.125, 9.413)
+      ..cubicTo(10.125, 6.387, 11.917, 4.716, 14.657, 4.716)
+      ..cubicTo(15.971, 4.716, 17.344, 4.951, 17.344, 4.951)
+      ..lineTo(17.344, 7.922)
+      ..lineTo(15.83, 7.922)
+      ..cubicTo(14.34, 7.922, 13.875, 8.854, 13.875, 9.808)
+      ..lineTo(13.875, 12.073)
+      ..lineTo(17.203, 12.618)
+      ..lineTo(16.531, 15.563)
+      ..lineTo(13.875, 15.563)
+      ..lineTo(13.875, 24)
+      ..cubicTo(19.612, 23.094, 24, 18.1, 24, 12.073)
+      ..close();
+
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(covariant _FacebookBrandPainter oldDelegate) =>
       oldDelegate.color != color;
 }
 

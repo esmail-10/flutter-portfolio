@@ -4,7 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 import '../core/constants/app_constants.dart';
 import '../core/theme/app_theme.dart';
 
-/// Animated splash and loading screen before displaying the portfolio.
 class SplashScreen extends StatefulWidget {
   final Widget child;
 
@@ -30,19 +29,15 @@ class _SplashScreenState extends State<SplashScreen>
       duration: const Duration(milliseconds: 600),
     );
 
-    _fadeAnimation = Tween<double>(begin: 1.0, end: 0.0).animate(
-      CurvedAnimation(
-        parent: _controller,
-        curve: Curves.easeInOut,
-      ),
-    );
+    _fadeAnimation = Tween<double>(
+      begin: 1.0,
+      end: 0.0,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
 
-    _scaleAnimation = Tween<double>(begin: 0.9, end: 1.05).animate(
-      CurvedAnimation(
-        parent: _controller,
-        curve: Curves.easeOutCubic,
-      ),
-    );
+    _scaleAnimation = Tween<double>(
+      begin: 0.9,
+      end: 1.05,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOutCubic));
 
     _startLoading();
   }
@@ -50,7 +45,13 @@ class _SplashScreenState extends State<SplashScreen>
   Future<void> _startLoading() async {
     for (int i = 1; i <= 100; i++) {
       await Future.delayed(
-        Duration(milliseconds: i < 25 ? 12 : i < 75 ? 8 : 14),
+        Duration(
+          milliseconds: i < 25
+              ? 12
+              : i < 75
+              ? 8
+              : 14,
+        ),
       );
       if (!mounted) return;
       setState(() {
@@ -97,7 +98,6 @@ class _SplashScreenState extends State<SplashScreen>
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        // Profile photo glowing container
                         Container(
                           padding: const EdgeInsets.all(4),
                           decoration: BoxDecoration(
@@ -124,7 +124,6 @@ class _SplashScreenState extends State<SplashScreen>
                         ),
                         const SizedBox(height: 28),
 
-                        // Title
                         Text(
                           '${AppConstants.name.toLowerCase()}.dev',
                           style: GoogleFonts.inter(
@@ -145,7 +144,6 @@ class _SplashScreenState extends State<SplashScreen>
                         ),
                         const SizedBox(height: 36),
 
-                        // Progress Indicator
                         SizedBox(
                           width: 220,
                           child: Column(
@@ -156,8 +154,7 @@ class _SplashScreenState extends State<SplashScreen>
                                   value: _progress,
                                   minHeight: 6,
                                   backgroundColor: AppColors.card,
-                                  valueColor:
-                                      const AlwaysStoppedAnimation<Color>(
+                                  valueColor: AlwaysStoppedAnimation<Color>(
                                     AppColors.primary,
                                   ),
                                 ),
